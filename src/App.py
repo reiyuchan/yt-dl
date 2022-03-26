@@ -1,3 +1,4 @@
+from turtle import goto
 from pytube import YouTube,Playlist
 
 class YT_DL:
@@ -34,10 +35,20 @@ class YT_DL:
                 print(f"Download in progress...!")
                 self.video.streams.filter(file_extension='mp4').first().download()
 
+while True:
 
-dl = YT_DL(
-    input(
-        "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos):"
+    dl = YT_DL(
+        input(
+            "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos):"
+        )
     )
-)
-dl.setUP()
+    dl.setUP()
+    c = input('Do you want to continue? (y/n)\n')
+    if c == 'n':
+        print('Quitting...!')
+        input("Press Enter to continue...!")
+        break
+    elif c == 'y':
+        continue
+    else:
+        print('Invalid..choice')
