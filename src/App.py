@@ -1,4 +1,4 @@
-from turtle import goto
+from tqdm import tqdm
 from pytube import YouTube,Playlist
 
 class YT_DL:
@@ -13,7 +13,8 @@ class YT_DL:
             )
         print(f"Downloading video: {self.yt.title}")
         print(f"Download in progress...!")
-        self.yt.streams.filter(file_extension='mp4').first().download()
+        for _ in tqdm(self.yt.streams.filter(file_extension='mp4').first().download()):
+            pass
         print(f'{self.yt.title} downloaded...!')
 
     def setUP(self):
@@ -21,9 +22,11 @@ class YT_DL:
             if self.choice == "s":
                 singleUrl = input("Enter the video url: ")
                 self.dlSingle(singleUrl)
+                break
             elif self.choice == "m":
                 playlistUrl = input("Enter the playlist url: ")
                 self.dlPlaylist(playlistUrl)
+                break
             else:
                 print(f'Invalid..choice...!')
                 break
