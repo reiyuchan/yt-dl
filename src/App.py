@@ -41,7 +41,8 @@ class YT_DL:
             else:
                 print(f"Downloading Video: {self.yt.title}")
                 print(f"Download in progress...!")
-                self.yt.streams.filter(file_extension='mp4').first().download()
+                for _ in tqdm(self.yt.streams.filter(file_extension='mp4').first().download()):
+                    pass
             print(f'{self.yt.title} downloaded...!')
 
 while True:
