@@ -11,9 +11,10 @@ class YT_DL:
             use_oauth=False,
             allow_oauth_cache=False
             )
-        print(f"Downloading video: {singleUrl}")
+        print(f"Downloading video: {self.yt.title}")
         print(f"Download in progress...!")
         self.yt.streams.filter(file_extension='mp4').first().download()
+        print(f'{self.yt.title} downloaded...!')
 
     def setUP(self):
         if self.choice == "s":
@@ -31,9 +32,10 @@ class YT_DL:
             except self.VideoUnavailable:
                 print(f"Video {self.url} is unavailable, skipping...!")
             else:
-                print(f"Downloading Video: {self.url}")
+                print(f"Downloading Video: {self.yt.title}")
                 print(f"Download in progress...!")
-                self.video.streams.filter(file_extension='mp4').first().download()
+                self.yt.streams.filter(file_extension='mp4').first().download()
+            print(f'{self.yt.title} downloaded...!')
 
 while True:
 
