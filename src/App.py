@@ -17,12 +17,16 @@ class YT_DL:
         print(f'{self.yt.title} downloaded...!')
 
     def setUP(self):
-        if self.choice == "s":
-            singleUrl = input("Enter the video url: ")
-            self.dlSingle(singleUrl)
-        elif self.choice == "m":
-            playlistUrl = input("Enter the playlist url: ")
-            self.dlPlaylist(playlistUrl)
+        while True:
+            if self.choice == "s":
+                singleUrl = input("Enter the video url: ")
+                self.dlSingle(singleUrl)
+            elif self.choice == "m":
+                playlistUrl = input("Enter the playlist url: ")
+                self.dlPlaylist(playlistUrl)
+            else:
+                print(f'Invalid..choice...!')
+                break
 
     def dlPlaylist(self,playlistUrl):
         self.plyls = Playlist(playlistUrl)
@@ -53,4 +57,4 @@ while True:
     elif c == 'y':
         continue
     else:
-        print('Invalid..choice')
+        print('Invalid..choice...!')
