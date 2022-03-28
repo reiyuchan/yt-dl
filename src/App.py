@@ -15,7 +15,7 @@ class YT_DL:
         print(f"Downloading video: {self.yt.title}")
         print(f"Download in progress...!")
         self.yt.streams.filter(file_extension='mp4').first().download()
-        print(f'{self.yt.title} downloaded...!')
+        print(f'{self.yt.title} ')
 
     def setUP(self):
         while True:
@@ -42,13 +42,13 @@ class YT_DL:
                 print(f"Downloading Video: {self.yt.title}")
                 print(f"Download in progress...!")
                 self.yt.streams.filter(file_extension='mp4').first().download()
-            print(f'{self.yt.title} downloaded...!')
+            print(f'{self.yt.title} ')
 
 while True:
 
     dl = YT_DL(
         input(
-            "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos):"
+            "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos): "
         )
     )
     dl.setUP()
