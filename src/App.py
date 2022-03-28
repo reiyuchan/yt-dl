@@ -1,5 +1,5 @@
-from tqdm import tqdm
 from pytube import YouTube,Playlist
+from pytube.cli import on_progress
 
 class YT_DL:
     def __init__(self, choice) -> None:
@@ -8,13 +8,13 @@ class YT_DL:
     def dlSingle(self,singleUrl):
         self.yt = YouTube(
             singleUrl,
+            on_progress_callback=on_progress,
             use_oauth=False,
             allow_oauth_cache=False
             )
         print(f"Downloading video: {self.yt.title}")
         print(f"Download in progress...!")
-        for _ in tqdm(self.yt.streams.filter(file_extension='mp4').first().download()):
-            pass
+        self.yt.streams.filter(file_extension='mp4').first().download()
         print(f'{self.yt.title} downloaded...!')
 
     def setUP(self):
@@ -41,8 +41,7 @@ class YT_DL:
             else:
                 print(f"Downloading Video: {self.yt.title}")
                 print(f"Download in progress...!")
-                for _ in tqdm(self.yt.streams.filter(file_extension='mp4').first().download()):
-                    pass
+                self.yt.streams.filter(file_extension='mp4').first().download()
             print(f'{self.yt.title} downloaded...!')
 
 while True:
