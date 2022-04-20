@@ -14,7 +14,6 @@ class YT_DL:
     def dlSingle(self,singleUrl: str):
         '''Fetches a`valid YouTube video URL <str>`from user and proceeds to`download the video`
 
-        :param self:
         :param str url:
             valid YouTube video url
          
@@ -50,7 +49,6 @@ class YT_DL:
     def dlPlaylist(self,playlistUrl: str):
         '''Fetches a`valid YouTube playlist URL <str>`from user and proceeds to`download the playlist`
 
-        :param self
         :param str url:
             a valid YouTube playlist url
         '''
