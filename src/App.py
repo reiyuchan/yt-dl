@@ -4,12 +4,17 @@ from pytube.cli import on_progress
 class YT_DL:
     def __init__(self, choice: str) -> None:
         '''
-        Constructs :class:`YT-DL <YT-DL>`
+        Constructs :class:`YT_DL <YT_DL>`
 
         :param str choice:
             choice between `video or playlist`
         '''
         self.choice = choice
+
+    def __init__(self) -> None:
+        '''
+        Constructs :class:`YT_DL <YT_DL>`
+        '''
 
     def dlSingle(self,singleUrl: str):
         '''Fetches a`valid YouTube video URL <str>`from user and proceeds to`download the video`
