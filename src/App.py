@@ -5,6 +5,9 @@ class YT_DL:
     def __init__(self, choice: str) -> None:
         '''
         Constructs :class:`YT-DL <YT-DL>`
+
+        :param str choice:
+            choice between `video or playlist`
         '''
         self.choice = choice
 
