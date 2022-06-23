@@ -2,10 +2,27 @@ from pytube import YouTube,Playlist
 from pytube.cli import on_progress
 
 class YT_DL:
-    def __init__(self, choice) -> None:
+    def __init__(self, choice: str) -> None:
+        '''
+        Constructs :class:`YT_DL <YT_DL>`
+
+        :param str choice:
+            choice between `video or playlist`
+        '''
         self.choice = choice
 
-    def dlSingle(self,singleUrl):
+    def __init__(self) -> None:
+        '''
+        Constructs :class:`YT_DL <YT_DL>`
+        '''
+
+    def dlSingle(self,singleUrl: str):
+        '''Fetches a`valid YouTube video URL <str>`from user and proceeds to`download the video`
+
+        :param str url:
+            valid YouTube video url
+         
+        '''
         self.yt = YouTube(
             singleUrl,
             on_progress_callback=on_progress,
@@ -18,6 +35,9 @@ class YT_DL:
         print(f'{self.yt.title} ')
 
     def setUP(self):
+        '''
+        Sets everything up
+        '''
         while True:
             if self.choice == "s":
                 singleUrl = input("Enter the video url: ")
@@ -31,7 +51,12 @@ class YT_DL:
                 print(f'Invalid..choice...!')
                 break
 
-    def dlPlaylist(self,playlistUrl):
+    def dlPlaylist(self,playlistUrl: str):
+        '''Fetches a`valid YouTube playlist URL <str>`from user and proceeds to`download the playlist`
+
+        :param str url:
+            a valid YouTube playlist url
+        '''
         self.plyls = Playlist(playlistUrl)
         for self.url in self.plyls.video_urls:
             try:
@@ -44,20 +69,21 @@ class YT_DL:
                 self.yt.streams.filter(file_extension='mp4').first().download()
             print(f'{self.yt.title} ')
 
-while True:
+if __name__ == '__main__':
+    while True:
 
-    dl = YT_DL(
-        input(
-            "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos): "
+        dl = YT_DL(
+            input(
+                "Do you want to download playlist or single video? (s for single video/m for playlist or alot of videos): "
+            )
         )
-    )
-    dl.setUP()
-    c = input('Do you want to continue? (y/n)\n')
-    if c == 'n':
-        print('Quitting...!')
-        input("Press Enter to continue...!")
-        break
-    elif c == 'y':
-        continue
-    else:
-        print('Invalid..choice...!')
+        dl.setUP()
+        c = input('Do you want to continue? (y/n)\n')
+        if c == 'n':
+            print('Quitting...!')
+            input("Press Enter to continue...!")
+            break
+        elif c == 'y':
+            continue
+        else:
+            print('Invalid..choice...!')
